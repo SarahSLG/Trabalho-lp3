@@ -26,7 +26,7 @@ def cadastrar_pessoa():
     senha = request.form['password'] 
     codigo = (len(cod))+2
     admin = False
-    funcoes.salvar_cadastro(nome,email,senha,codigo, admin)
+    funcoes.salvar_cadastro(nome, email, senha, codigo, admin)
     return render_template('login.html')
         
 # <!--action indica a ação que o formulário irá fazer ao envia-lo, ou seja, para onde irá ser redirecionado quando o formulário for enviado-->>
@@ -47,9 +47,22 @@ def formulario_sala():
     return render_template('listar-salas.html')
     
 
-@app.route("/reservar-sala")
+@app.route("/reservar_sala")
+def reservarsala(): 
+    return render_template("reservar-sala.html", salas = funcoes.salas_arquivo())
+
+
+@app.route("/reservar_sala", methods = ['POST'])
 def reservar_sala():
-    return render_template('reservar-sala.html')
+    cod = funcoes.reservas_arquivo()
+    codigo = len(cod)+1
+    sala = request.form['sala'].strip()
+    d_inicio = request.form['inicio'].strip()
+    d_fim = request.form['fim'].strip
+    admin = False
+    ativo = True
+    funcoes.cadastrar_reserva(codigo, sala, d_inicio, d_fim, admin, ativo)
+    return render_template('reserva/detalhe-reserva.html')
 
 @app.route("/listar_salas")
 def listar_sala():
