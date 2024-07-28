@@ -1,4 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+import csv
+from reserva_app import funcoes
+
+# REQUEST - importar solicitações com o modelo de renderização 
 
 app = Flask("reservas")
 
@@ -6,14 +10,42 @@ app = Flask("reservas")
 def login():
     return render_template('login.html')
 
+
+# responsável por renderizar a página cadastro pro usuário - método get
 @app.route("/cadastro")
-def cadastrar_pessoa():
+def cadastro():
     return render_template('cadastro.html')
 
 
-@app.route("/cadastrar_sala")
+# Responsável por processar os dados do formulário da página de cadastro
+@app.route("/cadastro", methods = ['POST'])
+def cadastrar_pessoa():
+    cod = funcoes.cadastro_arquivo()
+    nome = request.form['nome'] # O objeto request é do próprio Flask.
+    email = request.form['email'] # [chave do dicionário]
+    senha = request.form['password'] 
+    codigo = (len(cod))+2
+    admin = False
+    funcoes.salvar_cadastro(nome,email,senha,codigo, admin)
+    return render_template('login.html')
+        
+# <!--action indica a ação que o formulário irá fazer ao envia-lo, ou seja, para onde irá ser redirecionado quando o formulário for enviado-->>
+@app.route("/cadastrar_sala")   
 def cadastrar_sala():
     return render_template('cadastrar-sala.html')
+
+@app.route("/cadastrar_sala", methods = ['POST'])
+def formulario_sala():
+    cod = funcoes.salas_arquivo()
+    tipo = request.form['tipo'].strip()
+    capacidade = request.form['capacidade'].strip() # [chave do dicionário] 
+    descricao = request.form['descricao'].strip()# O objeto request é do próprio Flask.
+    codigo = (len(cod))+2
+    ativo = True
+    #tipo_string = funcoes.tipo(tipo)
+    funcoes.cadastrar_salas(tipo, capacidade, descricao, codigo, ativo)
+    return render_template('listar-salas.html')
+    
 
 @app.route("/reservar-sala")
 def reservar_sala():
@@ -21,8 +53,15 @@ def reservar_sala():
 
 @app.route("/listar_salas")
 def listar_sala():
-    return render_template('listar-salas.html')
+    return render_template('listar-salas.html', salas = funcoes.salas_arquivo())
 
 @app.route("/reservas")
 def reservas():
     return render_template('reservas.html')
+
+@app.route("/detalhe_reserva")
+def detalhe_reserva():
+    return render_template('reserva/detalhe-reserva.html')
+
+
+
