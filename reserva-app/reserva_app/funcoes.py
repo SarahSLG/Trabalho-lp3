@@ -4,12 +4,12 @@ def cadastro_arquivo():
         for linha in usuarios2: # faz cada linha ser um dicionário
             dados_usuario = linha.strip().split(",") # Tira os espaços antes e depois 
             linha = {
-                "nome": dados_usuario[0],
-                "email": dados_usuario[1], 
-                "senha": dados_usuario[2],
-                "codigo": dados_usuario[3],
-                "admin": dados_usuario[4]
-            }
+                        "nome": dados_usuario[0],
+                        "email": dados_usuario[1], 
+                        "senha": dados_usuario[2],
+                        "codigo": dados_usuario[3],
+                        "admin": dados_usuario[4]
+                    }
             usuarios.append(linha)
             return usuarios
 
@@ -24,12 +24,12 @@ def salas_arquivo():
         for linha in salas2: # faz cada linha ser um dicionário
             dados_salas = linha.strip().split(",") # Tira os espaços antes e depois 
             linha = {
-                "codigo": dados_salas[0],
-                "tipo": dados_salas[1], 
-                "capacidade": dados_salas[2],
-                "descricao": dados_salas[3],
-                "ativo": dados_salas[4]
-            }
+                        "codigo": dados_salas[0],
+                        "tipo": dados_salas[1], 
+                        "capacidade": dados_salas[2],
+                        "descricao": dados_salas[3],
+                        "ativo": dados_salas[4]
+                    }
             salas.append(linha)
     return salas
         
@@ -44,13 +44,13 @@ def reservas_arquivo():
         for linha in reservas2: # faz cada linha ser um dicionário
             dados_reservas = linha.strip().split(",") # Tira os espaços antes e depois 
             linha = {
-                "codigo": dados_reservas[0],
-                "sala": dados_reservas[1], 
-                "d_início": dados_reservas[2],
-                "d_fim": dados_reservas[3],
-                "admin": dados_reservas[4],
-                "ativo": dados_reservas[5]
-            }
+                        "codigo": dados_reservas[0],
+                        "sala": dados_reservas[1], 
+                        "d_início": dados_reservas[2],
+                        "d_fim": dados_reservas[3],
+                        "admin": dados_reservas[4],
+                        "ativo": dados_reservas[5]
+                    }
             reservas.append(linha)
     return reservas
 
