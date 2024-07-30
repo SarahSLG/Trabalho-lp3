@@ -42,7 +42,7 @@ def formulario_sala():
     codigo = (len(cod))+2
     ativo = True
     funcoes.cadastrar_salas(tipo, capacidade, descricao, codigo, ativo)
-    return render_template('listar-salas.html')
+    return render_template('listar-salas.html', salas = funcoes.salas_arquivo())
     
 
 @app.route("/reservar_sala")
