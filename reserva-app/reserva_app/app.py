@@ -54,9 +54,9 @@ def reservarsala():
 def reservar_sala():
     cod = funcoes.reservas_arquivo()
     codigo = len(cod)+1
-    sala = request.form['sala'].strip()
-    d_inicio = request.form['inicio'].strip()
-    d_fim = request.form['fim'].strip
+    sala = request.form['sala']
+    d_inicio = request.form['inicio']
+    d_fim = request.form['fim']
     admin = False
     ativo = True
     funcoes.cadastrar_reserva(codigo, sala, d_inicio, d_fim, admin, ativo)
