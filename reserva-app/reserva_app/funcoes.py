@@ -26,8 +26,8 @@ def salas_arquivo():
             linha = {
                         "codigo": dados_salas[0],
                         "tipo": dados_salas[1], 
-                        "capacidade": dados_salas[2],
-                        "descricao": dados_salas[3],
+                        "descricao": dados_salas[2],
+                        "capacidade": dados_salas[3],
                         "ativo": dados_salas[4]
                     }
             salas.append(linha)
