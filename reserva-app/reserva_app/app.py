@@ -36,12 +36,12 @@ def cadastrar_sala():
 @app.route("/cadastrar_sala", methods = ['POST'])
 def formulario_sala():
     cod = funcoes.salas_arquivo()
-    tipo = request.form['tipo'].strip()
-    capacidade = request.form['capacidade'].strip() # [chave do dicionário] 
-    descricao = request.form['descricao'].strip()# O objeto request é do próprio Flask.
+    tipo = request.form['tipo']
+    capacidade = request.form['capacidade'] # [chave do dicionário] 
+    descricao = request.form['descricao']# O objeto request é do próprio Flask.
     codigo = (len(cod))+2
     ativo = True
-    funcoes.cadastrar_salas(tipo, capacidade, descricao, codigo, ativo)
+    funcoes.cadastrar_salas(codigo, tipo, descricao, capacidade, ativo)
     return render_template('listar-salas.html', salas = funcoes.salas_arquivo())
     
 
