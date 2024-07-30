@@ -4,11 +4,11 @@ def cadastro_arquivo():
         for linha in usuarios2: # faz cada linha ser um dicionário
             dados_usuario = linha.strip().split(",") # Tira os espaços antes e depois 
             linha = {
-                        "nome": dados_usuario[0],
-                        "email": dados_usuario[1], 
-                        "senha": dados_usuario[2],
-                        "codigo": dados_usuario[3],
-                        "admin": dados_usuario[4]
+                    "nome": dados_usuario[0],
+                    "email": dados_usuario[1], 
+                    "senha": dados_usuario[2],
+                    "codigo": dados_usuario[3],
+                    "admin": dados_usuario[4]
                     }
             usuarios.append(linha)
             return usuarios
@@ -58,5 +58,4 @@ def cadastrar_reserva(codigo, sala, d_inicio, d_fim, admin, ativo):
      with open("Dados/reservas.csv", "a", encoding="utf8") as reservas2: 
         reservas =  f"{codigo},{sala},{d_inicio},{d_fim},{admin},{ativo}"
         reservas2.write(f"{reservas}\n")
-
 

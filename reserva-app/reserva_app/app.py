@@ -47,7 +47,7 @@ def formulario_sala():
 
 @app.route("/reservar_sala")
 def reservarsala(): 
-    return render_template("reservar-sala.html", salas = funcoes.salas_arquivo())
+    return render_template('reservar-sala.html', salas = funcoes.salas_arquivo())
 
 
 @app.route("/reservar_sala", methods = ['POST'])
@@ -73,6 +73,5 @@ def reservas():
 @app.route("/detalhe_reserva")
 def detalhe_reserva():
     return render_template('reserva/detalhe-reserva.html')
-
 
 
