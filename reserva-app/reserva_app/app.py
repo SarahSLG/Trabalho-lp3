@@ -29,7 +29,6 @@ def cadastrar_pessoa():
     funcoes.salvar_cadastro(nome, email, senha, codigo, admin)
     return render_template('login.html')
         
-# <!--action indica a ação que o formulário irá fazer ao envia-lo, ou seja, para onde irá ser redirecionado quando o formulário for enviado-->>
 @app.route("/cadastrar_sala")   
 def cadastrar_sala():
     return render_template('cadastrar-sala.html')
@@ -42,7 +41,6 @@ def formulario_sala():
     descricao = request.form['descricao'].strip()# O objeto request é do próprio Flask.
     codigo = (len(cod))+2
     ativo = True
-    #tipo_string = funcoes.tipo(tipo)
     funcoes.cadastrar_salas(tipo, capacidade, descricao, codigo, ativo)
     return render_template('listar-salas.html')
     
